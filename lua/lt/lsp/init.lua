@@ -1,0 +1,1 @@
+require 'lt.lsp.settings'

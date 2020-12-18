@@ -1,0 +1,70 @@
+"https://github.com/Shougo/defx.nvim/blob/master/doc/defx.txt
+"https://github.com/kristijanhusak/defx-icons
+"Toggle defx
+
+let g:defx_icons_enable_syntax_highlight = 0
+let g:defx_icons_column_length = 1
+let g:defx_icons_directory_icon = ''
+let g:defx_icons_mark_icon = '*'
+let g:defx_icons_copy_icon = ''
+let g:defx_icons_move_icon = ''
+let g:defx_icons_parent_icon = ''
+let g:defx_icons_default_icon = ''
+let g:defx_icons_directory_symlink_icon = ''
+
+" filename column as percentage of window width
+call defx#custom#column('filename', {
+      \ 'min_width' : "-70",
+      \ 'max_width' :"-100" 
+      \ })
+
+call defx#custom#column('git', 'indicators', {
+  \     'Modified'  : '•',
+  \     'Staged'    : '✚',
+  \     'Untracked' : 'ᵁ',
+  \     'Renamed'   : '≫',
+  \     'Unmerged'  : '≠',
+  \     'Ignored'   : 'ⁱ',
+  \     'Deleted'   : '✖',
+  \     'Unknown'   : '?'
+  \   })
+
+call defx#custom#column('time', {
+      \ 'format': '%Y %b%e %H:%M',
+      \ })
+
+call defx#custom#option('_', {
+  \ 'resume': 1,
+  \ 'winwidth': 30,
+  \ 'split': 'vertical',
+  \ 'root_marker': '',
+  \ 'direction': 'topleft',
+  \ 'show_ignored_files': 0,
+  \ 'columns': "git:indent:icons:filename",
+  \ 'ignored_files': '*.pyc,*.pyd,*~,*.swo,*.swp,.git',
+  \ 'buffer_name': 'defxplorer',
+  \ 'toggle': 1
+  \ })
+
+
+augroup user_plugin_defx
+    autocmd!
+    " Define defx window mappings
+    autocmd FileType defx call <SID>defx_mappings()
+
+    " Delete defx if it's the only buffer left in the window
+    autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
+
+    " Move focus to the next window if current buffer is defx
+    autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
+
+    "autocmd FileType defx 
+augroup END
+
+
+"function! s:find_files(context) abort
+  "Find files in parent dir
+  "let
+
+
+map - :Defx<CR>
