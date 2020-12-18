@@ -48,10 +48,11 @@ vim.g.lightline = {
          right=  '|',
     },
     separator = {
-        left = ''
+        left = "",
+        right = '',
     },
     tabline_separator = {
-        left = '⮀',
+        left = ' ',
     },
     tabline = {
         left = {{'buffers'}},
