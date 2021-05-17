@@ -8,9 +8,9 @@ let mapleader="\<SPACE>"
 let s:settings_config_dir = expand('~/.config/nvim')
 let s:settings_plugin_dir = expand(s:settings_config_dir . '/ftplugin')
 
-let g:UltiSnipsExpandTrigger='<c-e>'
-let g:UltiSnipsJumpForwardTrigger='<c-n>'
-let g:UltiSnipsJumpBackwardTrigger='<c-p>'
+"let g:UltiSnipsExpandTrigger='<c-e>'
+"let g:UltiSnipsJumpForwardTrigger='<c-n>'
+"let g:UltiSnipsJumpBackwardTrigger='<c-p>'
 "Glob
 " let g:netrw_banner = 0          "Remove retrw banner"
 " let g:netrw_liststyle = 3

@@ -16,6 +16,8 @@ nnoremap <leader>b<leader> :b
 
 "remove search highlight
 nnoremap <esc> :noh<return><esc>
+"escape terminal with esc key
+tnoremap <esc> <C-\><C-n>
 
 "show leader key mappings
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -38,26 +40,15 @@ vnoremap < <gv
 vnoremap > >gv
 
 "nvim-lsp
-" nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-"nnoremap <silent>gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
+"others moved to lsp/settings.lua
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-
-nnoremap <silent>]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent>[g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-
 nnoremap <leader>d <cmd> lua vim.lsp.diagnostic.set_loclist()<CR>
-"nvim-lua/diagnostic
-" nnoremap <silent>[g    <cmd>PrevDiagnosticCycle <CR>
-" nnoremap <silent>]g    <cmd>NextDiagnosticCycle <CR>
 
 "FZF
 nmap <leader><tab> <plug>(fzf-maps-n)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-"imap <c-x><c-f> <plug>(fzf-complete-path)
-"imap 
 
 "inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
 "inoremap <expr> <c-x><c-f> fzf#vim#complete#path("find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'")

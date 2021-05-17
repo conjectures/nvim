@@ -1,4 +1,4 @@
--- NVIM - LSP --
+-- NVIM - LSP -
 local nvim_lsp = require('lspconfig')
 local lsp_status = require('lsp-status')
 local lsp_completion = require('completion')
@@ -15,6 +15,9 @@ local default_lsp_config = {on_attach = custom_on_attach, capabilities = lsp_sta
 
 local servers = {
     html = {},
+    bashls = {},
+    yamlls = {},
+
     pyls = {
       settings = {
         pyls = {
@@ -31,6 +34,17 @@ local servers = {
         }
       },
     },
+    -- gopls = {
+    --     cmd = {"gopls", "serve"},
+    --     settings = {
+    --       gopls = {
+    --         analyses = {
+    --           unusedparams = true,
+    --         },
+    --         staticcheck = true,
+    --         },
+    --     },
+    -- },
 }
 --nvim_lsp.diagnosticls.setup{on_attach=require'diagnostic'.on_attach}
 -- nvim_lsp.tsserver.setup{}
@@ -59,28 +73,11 @@ for server, config in pairs(servers) do
     nvim_lsp[server].setup(vim.tbl_deep_extend("force", default_lsp_config, config))
 end
 
+-- Set Keymaps
 local opts = { noremap=true }
 vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-
--- TREESITTER --
--- local nvim_treesitter = require'nvim-treesitter.configs'
--- 
--- nvim_treesitter.setup {
--- ensure_installed = "maintained",
--- highlight = {
---     enable = true,
---     use_languagetree = true,
--- },
--- incremental_selection = {
---     enable = true,
---     keymaps = {
---         init_selection = "gnn",
---         node_incremental = "grn",
---         scope_incremental = "grc",
---         node_decremental = "grm",
---     }, },
--- }
--- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
--- parser_config.html.used_by = "htmldjango"
+vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)

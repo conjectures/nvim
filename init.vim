@@ -2,6 +2,7 @@
 "   File: ~/.config/nvim/init.vim "   Author: Alex "   Created: 10.10.18
 
 "echom "HELLO WORLD"
+"
 "~ ~ ~ PLUGINS ~ ~ ~" 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -19,7 +20,7 @@ Plug 'liuchengxu/vim-which-key'                                        "Super ke
 Plug '~/.config/fzf'                                                    "fzf installation and vim wrapper
 Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }                 "fzf vim integration
 Plug 'BurntSushi/ripgrep'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'psliwka/vim-smoothie'                                             "Smooth scrolling
@@ -53,7 +54,7 @@ Plug 'nvim-lua/lsp-status.nvim'
 
 "Syntax
 "Plug 'sheerun/vim-polyglot'                                             "Additional syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 
 "
 "
@@ -192,8 +193,17 @@ augroup END
 highlight Normal ctermbg=None
 "remove background from 'gutter'"
 highlight SignColumn ctermbg=None
+highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=None gui=NONE guifg=#93a1a1 guibg=#002931
 
-
+" augroup neovim_terminal
+"     autocmd!
+"     " Enter Terminal-mode (insert) automatically
+"     autocmd TermOpen * startinsert
+"     " Disables number lines on terminal buffers
+"     autocmd TermOpen * :set nonumber norelativenumber
+"     " allows you to use Ctrl-c on terminal window
+"     autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+" augroup END
 "let g:diagnostic_show_sign = 1
 "sign define LspDiagnos
 " Terminal Function

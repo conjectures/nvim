@@ -1,3 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/home/alex/.config/nvim/test'
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/alex/docs/edu/spg/week10/eng84_terraform'
+let g:netrw_dirhist_2='/home/alex/.config/nvim/plugged'
+let g:netrw_dirhist_1='/home/alex/docs/edu/spg/other/discord_bot_eng84/.git'
+let g:netrw_dirhist_0='/home/alex/docs/edu/spg/week7/eng84_cloud_computing/aws'
+let g:netrw_dirhist_9='/home/alex/docs/edu/spg/week7/eng84_cloud_computing/app'
+let g:netrw_dirhist_8='/home/alex/docs/edu/spg/week6/eng84_vagrant'
+let g:netrw_dirhist_7='/home/alex/docs/edu/spg/week6/eng84-vagrant-multi-machine/app/environment'
+let g:netrw_dirhist_6='/home/alex/docs/edu/spg/SG-Engineering84'
+let g:netrw_dirhist_5='/home/alex/docs/edu/spg/py_week_03/eng84-airport-project/app/core'
+let g:netrw_dirhist_4='/home/alex/docs/proj/prg/web-projects/django/kittchen/docker'
