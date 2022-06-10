@@ -17,23 +17,16 @@ local servers = {
     html = {},
     bashls = {},
     yamlls = {},
-
-    pyls = {
-      settings = {
-        pyls = {
-          plugins = {
-            pycodestyle = {
-              maxLineLength = 150
-            },
-            -- jedi_definition = {
-            --     enabled = True,
-            --     follow_imports = True,
-            --     follow_builtin_imports = True,
-            -- },
-          }
+    pyright= {
+        settings = {
+            python = {
+                analysis = {
+                    typeCheckingMode = "off",
+                }
+            }
         }
-      },
     },
+    terraformls = {},
     -- gopls = {
     --     cmd = {"gopls", "serve"},
     --     settings = {
@@ -74,10 +67,15 @@ for server, config in pairs(servers) do
 end
 
 -- Set Keymaps
-local opts = { noremap=true }
-vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+
+local function lsp_keymaps(bufnr)
+    local opts = { noremap=true, silent=true }
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+end
+

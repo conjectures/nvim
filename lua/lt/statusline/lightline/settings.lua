@@ -71,7 +71,7 @@ function! LspStatus() abort
 endfunction
 
 function! LightlineFugitive()
-    let _ = fugitive#head()
+    let _ = FugitiveHead()
     return strlen(_) ? ' '._ : ''
 endfunction
 
