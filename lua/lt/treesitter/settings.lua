@@ -9,7 +9,7 @@ local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
 -- local nvim_treesitter = require'nvim-treesitter.configs'
 
 configs.setup {
-    ensure_installed = {"typescript", "html", "tsx", "lua", "json", "css", "javascript", "python", "go", "cpp", "rst", "vue", "hcl"},
+    ensure_installed = {"typescript", "html", "tsx", "lua", "json", "css", "javascript", "python", "go", "cpp", "rst", "vue", "hcl", "terraform"},
     sync_install = false,
     highlight = {
         enable = true,
@@ -42,5 +42,5 @@ configs.setup {
 }
 
 -- parse terraform files with hashicorp lang parser
-ft_to_parser.tf = "hcl" 
+-- ft_to_parser.tf = "hcl" 
 -- parser_config.html.used_by = "htmldjango"

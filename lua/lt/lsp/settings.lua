@@ -1,12 +1,12 @@
 -- NVIM - LSP -
 local nvim_lsp = require('lspconfig')
 local lsp_status = require('lsp-status')
-local lsp_completion = require('completion')
+-- local lsp_completion = require('completion')
 
 
 local function custom_on_attach(client)
     lsp_status.on_attach(client)
-    lsp_completion.on_attach(client)
+    -- lsp_completion.on_attach(client)
      --require'completion'.on_attach()
  end
 
@@ -26,7 +26,7 @@ local servers = {
             }
         }
     },
-    terraformls = {},
+    terraformls= {},
     -- gopls = {
     --     cmd = {"gopls", "serve"},
     --     settings = {
