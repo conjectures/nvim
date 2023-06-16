@@ -1,5 +1,8 @@
 # Neovim Config Files
 
+Deprecated, now using [https://github.com/conjectures/nvim-lua]
+
+
 ## Todo: 
 * plugin config files into lua
 * change pyls to jedi-ls
